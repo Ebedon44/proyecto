@@ -1,27 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package org.proyecto.entity;
+package org.proyecto.dto;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
-/**
- *
- * @author Erick Bedón
- */
-@Entity
-@Table(name = "proyecto")
-public class Proyecto {
+public class ProyectoDTO {
 
-    @Id
     private Integer id;
     private String denominacion;
     private String detalleArrastre;
@@ -35,25 +18,17 @@ public class Proyecto {
     private Boolean recurrente;
     private Boolean arrastre;
     private Date fechaCreacion;
-
     private Date fechaModificacion;
 
     private String usuarioCreacion;
     private String usuarioModificacion;
 
-    @JoinColumn(name = "responsable", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Persona responsable;
+    private PersonaDTO responsable;
+    private AreaDTO area;
+    private ProcesoDTO proceso;
 
-    @JoinColumn(name = "proceso", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Proceso proceso;
 
-    @JoinColumn(name = "area", referencedColumnName = "id")
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Area area;
-
-    public Proyecto() {
+    public ProyectoDTO() {
     }
 
     public Integer getId() {
@@ -178,28 +153,28 @@ public class Proyecto {
         this.usuarioModificacion = usuarioModificacion;
     }
 
-    public Persona getResponsable() {
+    public PersonaDTO getResponsable() {
         return responsable;
     }
 
-    public void setResponsable(Persona responsable) {
+    public void setResponsable(PersonaDTO responsable) {
         this.responsable = responsable;
     }
 
-    public Proceso getProceso() {
-        return proceso;
-    }
-
-    public void setProceso(Proceso proceso) {
-        this.proceso = proceso;
-    }
-
-    public Area getArea() {
+    public AreaDTO getArea() {
         return area;
     }
 
-    public void setArea(Area area) {
+    public void setArea(AreaDTO area) {
         this.area = area;
+    }
+
+    public ProcesoDTO getProceso() {
+        return proceso;
+    }
+
+    public void setProceso(ProcesoDTO proceso) {
+        this.proceso = proceso;
     }
 
     public Date getFechaModificacion() {
